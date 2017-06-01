@@ -1,14 +1,25 @@
+oracle-xe:
+ image: sath89/oracle-xe-11g
+ ports:
+  - "1521"
+  - "8080"
+ volumes:
+  - /Users/rkanakam/Servers/neu/oracle-xe/data:/u01/app/oracle
+  - /Users/rkanakam/Servers/neu/oracle-xe/initdb:/docker-entrypoint-initdb.d
+ stdin_open: true
+ tty: true
+
 mysql:
-  image: mysql:5.7
-  ports:
-   - "3306"
-  volumes:
-   - /Users/rkanakam/Servers/neu/mysql/data:/var/lib/mysql
-   - /Users/rkanakam/Servers/neu/mysql/initdb:/docker-entrypoint-initdb.d
-  environment:
-   - MYSQL_ROOT_PASSWORD=liferay  
-  stdin_open: true
-  tty: true
+ image: mysql:5.7
+ ports:
+  - "3306"
+ volumes:
+  - /Users/rkanakam/Servers/neu/mysql/data:/var/lib/mysql
+  - /Users/rkanakam/Servers/neu/mysql/initdb:/docker-entrypoint-initdb.d
+ environment:
+  - MYSQL_ROOT_PASSWORD=liferay  
+ stdin_open: true
+ tty: true
   
 elasticsearch:
   image: elasticsearch:2.2.0
@@ -24,14 +35,17 @@ elasticsearch:
   tty: true
    
 liferay-dxp:
+  container_name: liferay-dxp-sp2-neu  
   build: /Users/rkanakam/Library/docker-workspace/liferay-dxp-sp2
-#  image: rkanakam/liferay-dxp-sp2
   ports:
    - "9080:8080"
+   - "13333:13333"
+   - "18000:8000"   
   volumes:
    - /Users/rkanakam/Servers/neu/app/data:/opt/liferay-dxp-digital-enterprise-7.0-sp2/data
    - /Users/rkanakam/Servers/neu/app/deploy:/opt/liferay-dxp-digital-enterprise-7.0-sp2/deploy
   links:
+   - oracle-xe
    - mysql
    - elasticsearch   
   stdin_open: true

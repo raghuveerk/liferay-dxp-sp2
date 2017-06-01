@@ -1,1 +1,11 @@
-CATALINA_OPTS="$CATALINA_OPTS -Dfile.encoding=UTF8 -Djava.net.preferIPv4Stack=true -Dorg.apache.catalina.loader.WebappClassLoader.ENABLE_CLEAR_REFERENCES=false -Duser.timezone=America/New_York -Xmx4096m -XX:MaxPermSize=512m"
+CATALINA_PID=$CATALINA_BASE/work/catalina.pid
+CATALINA_OPTS="$CATALINA_OPTS -Dfile.encoding=UTF8 -Djava.net.preferIPv4Stack=true"
+CATALINA_OPTS="$CATALINA_OPTS -Dorg.apache.catalina.loader.WebappClassLoader.ENABLE_CLEAR_REFERENCES=false"
+CATALINA_OPTS="$CATALINA_OPTS -Duser.timezone=America/New_York"
+CATALINA_OPTS="$CATALINA_OPTS -Xms2G -Xmx2G -XX:MaxPermSize=512m -Xss512K"
+CATALINA_OPTS="$CATALINA_OPTS -XX:+UseParNewGC -XX:+UseConcMarkSweepGC"
+CATALINA_OPTS="$CATALINA_OPTS -XX:+CMSParallelRemarkEnabled -XX:SurvivorRatio=20"
+CATALINA_OPTS="$CATALINA_OPTS -XX:ParallelGCThreads=2"
+CATALINA_OPTS="$CATALINA_OPTS -Djava.rmi.server.hostname=localhost -Dcom.sun.management.jmxremote.port=13333 -Dcom.sun.management.jmxremote.rmi.port=13333"
+CATALINA_OPTS="$CATALINA_OPTS -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.local.only=false"
+CATALINA_OPTS="$CATALINA_OPTS -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false"
