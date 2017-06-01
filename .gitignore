@@ -1,3 +1,6 @@
 *.bak
 bin/*
 commands.txt
+mysql/data
+elasticsearch
+oracle-xe/data

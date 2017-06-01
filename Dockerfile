@@ -1,7 +1,7 @@
 FROM ubuntu:16.04
 
 MAINTAINER Raghu Kanakamedala <dev@raghuveerk.com>
-ENV REFRESHED_AT 2017-04-25 23:07:00
+ENV REFRESHED_AT 2017-06-01 16:22:00
 
 RUN \
   # configure the "liferay" user
